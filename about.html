@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Sİbernology.png" type="image/x-icon">
+    <title>Sibernology | About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-pMde2rZ9u7+HjKw2H5TtqJc9OaG64K0RmgH/U6sFB1iFbKx9Xo0qOeD6xqV0D0BQFTOFCEhI6hBq8P2FVqv0Dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ABOUT SAYFASI ÖZEL STİLLERİ */
+        .about-page {
+            max-width: 1100px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        /* TERMİNAL BAŞLIĞI */
+        .terminal-title {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 48px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            color: #00ff00;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .terminal-title::before {
+            content: '>';
+            margin-right: 15px;
+            color: #00ff88;
+        }
+
+        .terminal-title::after {
+            content: '_';
+            animation: blink 1s infinite;
+            color: #00ff00;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ABOUT ME SECTION */
+        .about-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+        }
+
+        .terminal-line {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+            font-weight: bold;
+            margin-right: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+
+        .terminal-text {
+            color: #b0ffb0;
+            font-size: 17px;
+            font-family: 'Inter', 'Roboto', sans-serif;
+        }
+
+        .terminal-text strong {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .terminal-text em {
+            color: #80ff80;
+            font-style: italic;
+        }
+
+        /* SKILLS SECTION */
+        .skills-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skills-title::before {
+            content: '>>';
+            color: #00ff88;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: #00ff00;
+            background: rgba(0, 255, 0, 0.08);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #00ff00;
+        }
+
+        .skill-name {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            color: #b0ffb0;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-family: 'Courier New', monospace;
+        }
+
+        .skill-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        /* PROJECTS SECTION */
+        .projects-section {
+            margin-top: 30px;
+            margin-bottom: 60px;
+            /* Alt boşluk eklendi */
+        }
+
+        .projects-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            margin-bottom: 40px;
+            /* 30px'den 40px'e çıkarıldı */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .projects-title::before {
+            content: '>>';
+            color: #00ff88;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            /* 30px'den 40px'e çıkarıldı */
+        }
+
+        .project-card {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 35px;
+            /* 30px'den 35px'e çıkarıldı */
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            /* Alt boşluk eklendi */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 0, 0.15);
+            border-color: #00ff88;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            /* 15px'den 20px'e çıkarıldı */
+            margin-bottom: 25px;
+            /* 20px'den 25px'e çıkarıldı */
+            padding-bottom: 20px;
+            /* 15px'den 20px'e çıkarıldı */
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #00ff00;
+        }
+
+        .project-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .project-description {
+            color: #b0ffb0;
+            line-height: 1.7;
+            /* 1.6'dan 1.7'ye çıkarıldı */
+            font-size: 16px;
+            /* 15px'den 16px'e çıkarıldı */
+            flex-grow: 1;
+            margin-bottom: 25px;
+            /* 20px'den 25px'e çıkarıldı */
+        }
+
+        .project-features {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            /* 20px'den 25px'e çıkarıldı */
+            margin-top: 20px;
+            /* 15px'den 20px'e çıkarıldı */
+        }
+
+        .feature-item {
+            color: #80ff80;
+            padding: 8px 0;
+            /* 5px'den 8px'e çıkarıldı */
+            padding-left: 25px;
+            /* 20px'den 25px'e çıkarıldı */
+            position: relative;
+            font-size: 15px;
+            /* 14px'den 15px'e çıkarıldı */
+            margin-bottom: 8px;
+            /* Alt boşluk eklendi */
+            line-height: 1.5;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+            /* Son öğenin alt boşluğu kaldırıldı */
+        }
+
+        .feature-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        /* Büyük ekranlarda daha fazla boşluk */
+        @media (min-width: 768px) {
+            .projects-grid {
+                gap: 50px;
+                /* Büyük ekranlarda daha fazla boşluk */
+            }
+
+            .project-card {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* TIMELINE */
+        .timeline-section {
+            margin-top: 50px;
+        }
+
+        .timeline-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .timeline-title::before {
+            content: '>>';
+            color: #00ff88;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00ff00;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff00;
+            border: 2px solid #000;
+        }
+
+        .timeline-date {
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            color: #b0ffb0;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .terminal-title {
+                font-size: 32px;
+            }
+
+            .about-section,
+            .skills-section {
+                padding: 25px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .skills-title,
+            .projects-title,
+            .timeline-title {
+                font-size: 22px;
+            }
+        }
+
+        /* FOOTER FIX */
+        .site-footer {
+            position: relative;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="site-baslik" style="text-decoration: none; color: #00ff00;" href="index.html">
+            <pre style="font-family: monospace; font-size: 8px; line-height: 1;">
+
+  mmmm    o    #                                  ""#                        
+ #"   " mmm    #mmm    mmm    m mm  m mm    mmm     #     mmm    mmmm  m   m 
+ "#mmm    #    #" "#  #"  #   #"  " #"  #  #" "#    #    #" "#  #" "#  "m m" 
+     "#   #    #   #  #""""   #     #   #  #   #    #    #   #  #   #   #m#  
+ "mmm#" mm#mm  ##m#"  "#mm"   #     #   #  "#m#"    "mm  "#m#"  "#m"#   "#   
+                                                                 m  #   m"   
+                                                                  ""   ""    
+                                                                 
+                      </pre>
+        </a>
+        <nav class="site-buttons">
+            <a href="index.html" class="site-button">cd ~/.Home</a>
+            <a href="about.html" class="site-button">ls ~/.About</a>
+            <a href="services.html" class="site-button">ls ~/.Services</a>
+            <a href="contact.html" class="site-button">ls ~/.Contact</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="about-page">
+
+        <!-- TERMINAL TITLE -->
+        <h1 class="terminal-title">whoami</h1>
+
+        <!-- ABOUT SECTION -->
+        <section class="about-section">
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-text">
+                    Bu platform, <strong>siber güvenlik ve ağ güvenliği</strong> alanında kendimi geliştirirken,
+                    aynı zamanda sizlere projelerimi ve çalışmalarımı sunan kişisel bir portföydür.
+                    Tüm içerik ve yapı tamamen tarafımca geliştirilmiş olup, yapay zekadan yalnızca
+                    sınırlı metin ve tasarım iyileştirmelerinde yararlanılmıştır.
+                </span>
+            </div>
+
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-text">
+                    Site, önceki versiyonundan bilinçli bir şekilde ayrılarak hem teknik detaylara
+                    hem de kullanıcı deneyimine odaklı bir yapı sunar. <em>Amacım, akademik ve teknik
+                        bilgi birikimimi sürekli derinleştirmek ve özellikle Network Security alanında
+                        gelişmek.</em>
+                </span>
+            </div>
+
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-text">
+                    Projelerim eskiden sadece deneyim amaçlıydı; şimdi ise sistemli ve amaca yönelik
+                    olarak yayında. Önümüzdeki dönemde C++ öğrenmeyi ve farklı Network projeleri
+                    geliştirmeyi hedefliyorum. Bu platformda sadece projelerimi değil, CTF (Capture
+                    The Flag) çözümlerimi de paylaşmayı planlıyorum. Şu anlık hedeflerim bunlar ve
+                    güncellemeye her zaman devam edeceğim.
+                </span>
+            </div>
+
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-text">
+                    Örnek projelerimi aşağıda görebilirsiniz.
+                </span>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="skills-section">
+            <h2 class="skills-title">
+                <i class="fas fa-code"></i>
+                Skills & Technologies
+            </h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="skill-name">Cybersecurity</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Network Security</li>
+                        <li>Penetration Testing</li>
+                        <li>CTF Challenges</li>
+                        <li>Security Tools</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="skill-name">Development</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>JavaScript/Node.js</li>
+                        <li>Discord Bot Development</li>
+                        <li>OpenCV (Computer Vision)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="skill-name">Tools</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Wireshark</li>
+                        <li>Bettercap</li>
+                        <li>Metasploit</li>
+                        <li>Git & GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="projects-section">
+            <h2 class="projects-title">
+                <i class="fas fa-project-diagram"></i>
+                Example Projects
+            </h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3 class="project-title">Discord Botu</h3>
+                    </div>
+                    <p class="project-description">
+                        Gelişmiş moderasyon ve yönetim özelliklerine sahip Discord botu.
+                        Sunucu yönetimini kolaylaştıran ve güvenliği artıran çeşitli komutlar içerir.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">Uygunsuz konuşma biçimlerine karşı uyarılar ve cezalar</div>
+                        <div class="feature-item">Gelişmiş moderasyon komutları</div>
+                        <div class="feature-item">Rol yönetim sistemi</div>
+                        <div class="feature-item">Sunucu aktivite takibi</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="project-title">Python ile Görüntü İşleme</h3>
+                    </div>
+                    <p class="project-description">
+                        OpenCV kullanarak geliştirilmiş görüntü işleme projesi.
+                        El tanıma ve hareket bazlı kontrol sistemi.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">Gerçek zamanlı el tanıma</div>
+                        <div class="feature-item">Hareket bazlı kontrol sistemi</div>
+                        <div class="feature-item">Görüntü filtreleme teknikleri</div>
+                        <div class="feature-item">Nesne tespiti algoritmaları</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px;" class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="project-title">Network Security Tools</h3>
+                    </div>
+                    <p class="project-description">
+                        Ağ güvenliği testleri için geliştirilmiş çeşitli araçlar ve scriptler.
+                        Penetration testing ve network analizi araçları.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">Bettercap ile MITM saldırıları</div>
+                        <div class="feature-item">Network scanner ve analyzer</div>
+                        <div class="feature-item">Port scanning utilities</div>
+                        <div class="feature-item">Traffic analysis tools</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br><br>
+        <!-- TIMELINE SECTION -->
+        <section class="timeline-section">
+            <h2 class="timeline-title">
+                <i class="fas fa-road"></i>
+                Development Timeline
+            </h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-content">
+                        <strong>Active Development Phase</strong><br>
+                        Portfolio site redesign, advanced project development,
+                        and continuous learning in cybersecurity.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <strong>Skill Building Period</strong><br>
+                        Python development, Discord bot creation,
+                        basic cybersecurity concepts and tools.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Future Goals</div>
+                    <div class="timeline-content">
+                        <strong>Next Steps</strong><br>
+                        C++ learning, advanced network security projects,
+                        CTF competition participation, and open-source contributions.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <br><br>
+
+    <!-- FOOTER -->
+    <footer style="position: fixed;" class="site-footer">
+        <p>© 2025 - 2026 Telif Hakları <a href="https://instagram.com/sibernology.xyz" target="_blank">Sibernology'e
+                Aittir</a>.</p>
+        <div class="footer-icons">
+            <a href="https://github.com/Sibernology" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/sibernoloy.xyz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sibernologyxyz/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+
+    <!-- MATRIX CANVAS -->
+    <canvas id="matrix"></canvas>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = 'SIБERNOLOGYWHOAМИCYBERSECURITY010101$#%&@CTF{PYTHON}';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height;
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Scroll animasyonları
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.project-card, .skill-category');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

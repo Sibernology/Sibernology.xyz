@@ -1,0 +1,476 @@
+body {
+    background-color: black;
+    color: #00ff00;
+}
+
+p {
+    font-size: 16px;
+}
+
+.site-header {
+    background-color: #111;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 2px solid #00ff00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: -20px;
+}
+
+.site-buttons {
+    display: flex;
+    margin-right: 15px;
+}
+
+.site-button {
+    background-color: #222;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in;
+    margin-right: 15px;
+}
+
+.site-button:hover {
+    background-color: #00ff00;
+    color: black;
+}
+
+.index-cards {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: stretch;
+}
+
+/* ANA KART */
+.index-card {
+    background-color: #0A0F12;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    padding: 30px;
+    width: 50%;
+    box-sizing: border-box;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 18px;
+    min-height: 260px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+}
+
+.index-card h2 {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.logo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-card img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.soz {
+    width: 100%;
+    background-color: #05010f;
+    padding: 25px 40px;
+    box-sizing: border-box;
+    border-top: 2px solid #00ff00;
+    border-bottom: 2px solid #00ff00;
+    text-align: center;
+    margin: 0 auto 40px auto;
+    overflow: hidden;
+    bottom: -10px;
+    left: -10px;
+    right: 0%;
+}
+
+.soz h2 {
+    font-family: monospace;
+    color: #00ff00;
+    font-size: 22px;
+    background-color: #000;
+    padding: 10px 14px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .index-cards {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .index-card {
+        width: 100%;
+    }
+}
+
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Kartların arkasında kalması için */
+    background: black;
+    /* Temanın siyahı ile uyumlu */
+}
+
+body * {
+    position: relative;
+    z-index: 1;
+    /* Diğer içerikler canvasın üstünde kalacak */
+}
+
+.proje {
+    background-color: #0A0F12;
+    /* Terminal kart rengi */
+    border: 2px solid #00ff00;
+    /* Yeşil çerçeve */
+    border-radius: 10px;
+    /* Hafif yuvarlatılmış köşeler */
+    padding: 25px 30px;
+    /* İç boşluk */
+    margin: 30px auto;
+    /* Üst-alt boşluk ve ortalama */
+    max-width: 800px;
+    /* Çok geniş olmaması için */
+    text-align: center;
+    /* Başlığı ortala */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+    /* Hafif glow efekti */
+    font-family: monospace;
+    /* Terminal fontu */
+    color: #00ff00;
+    /* Yazı rengi */
+}
+
+.proje h3 {
+    margin: 0;
+    /* Başlık boşluklarını sıfırla */
+    font-size: 20px;
+    /* Orta boyutlu başlık */
+}
+
+
+.site-footer {
+    position: fixed;
+    display: inline-block;
+    background-color: #111;
+    padding: 15px 10px;
+    width: 100%;
+    border-top: 2px solid #00ff00;
+    text-align: center;
+    bottom: -10px;
+    left: -10px;
+    right: 0;
+    font-family: monospace;
+    color: #00ff00;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.site-footer a {
+    color: #3700ff;
+    text-decoration: none;
+}
+
+
+.about-me {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px 20px;
+    text-align: center;
+    line-height: 1.7;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: #bff8c6;
+    /* arka plan koyu ise açık yazı */
+    background-color: rgba(31, 31, 31, 0.95); 
+    /* sitenin genel tema rengine uyabilir */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-me p {
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.about-me strong {
+    color: #00ff00;
+    /* terminal temalı vurgulu */
+}
+
+.about-me em {
+    font-style: italic;
+    color: #80ff80;
+}
+
+.about-me p:hover {
+    text-shadow: 0 0 8px #00ff00;
+    transition: text-shadow 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .about-me {
+        padding: 20px 15px;
+        font-size: 1rem;
+    }
+}
+
+.terminal-prompt {
+    color: #00ff00;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.terminal-title {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 50px;
+    margin-top: 150px;
+    color: #00ff00;
+}
+
+::selection {
+    background-color: #DF5B1F;
+    color: gainsboro;
+}
+
+/* SERVICES SAYFASI GENEL STİL */
+.services {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.services > p {
+    text-align: center;
+    font-size: 18px;
+    color: #b0ffb0;
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
+
+/* KART CONTAINER */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* TEK KART */
+.card {
+    background: rgba(15, 20, 25, 0.95);
+    border: 2px solid #00ff00;
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.2);
+    border-color: #00ff88;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00ff00, #00ff88);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+/* KART İÇERİK */
+.card h3 {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.card p {
+    color: #b0ffb0;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* BUTON STİLLERİ */
+.card-button {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 136, 0.1));
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-button:hover {
+    background: linear-gradient(135deg, #00ff00, #00ff88);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.card-button::before {
+    content: '>';
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.card-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.card-button:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* KART GRUPLARI */
+.card:nth-child(1) {
+    border-color: #00ff00;
+}
+
+.card:nth-child(2) {
+    border-color: #00ff88;
+}
+
+.card:nth-child(3) {
+    border-color: #00ffcc;
+}
+
+/* MOBİL UYUMLULUK */
+@media (max-width: 768px) {
+    .services {
+        margin: 40px auto;
+        padding: 0 15px;
+    }
+    
+    .services h2 {
+        font-size: 32px;
+    }
+    
+    .services > p {
+        font-size: 16px;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .card h3 {
+        font-size: 20px;
+    }
+    
+    .card-button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+/* EFEKTLER */
+.card .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tech-tag {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00ff88;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}

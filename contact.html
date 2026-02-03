@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibernology | Contact</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CONTACT SAYFASI STİLLERİ */
+        .contact-page {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+            color: #b0ffb0;
+        }
+
+        /* TERMİNAL BAŞLIĞI */
+        .terminal-header {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .terminal-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* FORM CONTAINER */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SOL KOLON - FORM */
+        .contact-form-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+
+        /* FORM STİLLERİ - DÜZELTİLMİŞ */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #00ff00;
+            border-radius: 6px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            resize: vertical;
+            margin-left: -15px;
+        }
+
+        /* PLACEHOLDER RENGİ */
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #00ff88;
+            opacity: 0.7;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* BUTON */
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #111, #222);
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* SAĞ KOLON - İLETİŞİM BİLGİLERİ */
+        .contact-info-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .info-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            margin: 0 0 25px;
+            font-weight: bold;
+        }
+
+        /* İLETİŞİM KARTLARI */
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #b0ffb0;
+        }
+
+        .contact-card:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateX(5px);
+            border-color: #00ff00;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #00ff00;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex-grow: 1;
+        }
+
+        .contact-details h4 {
+            margin: 0 0 5px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .contact-details p {
+            margin: 2px 0;
+            font-size: 14px;
+            color: #80ff80;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* SOSYAL MEDYA */
+        .social-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #b0ffb0;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-3px);
+            border-color: #00ff00;
+        }
+
+        .social-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #00ff00;
+        }
+
+        /* MESAJ ALANI */
+        .message-area {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            display: none;
+        }
+
+        .message-success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            display: block;
+        }
+
+        .message-error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff5555;
+            display: block;
+        }
+
+        /* COPY TO CLIPBOARD */
+        .copy-button {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        .copied-message {
+            color: #00ff00;
+            font-size: 12px;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .copied-message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a class="site-baslik" style="text-decoration: none; color: #00ff00;" href="index.html">
+            <pre style="font-family: monospace; font-size: 8px; line-height: 1;">
+  mmmm    o    #                                  ""#                        
+ #"   " mmm    #mmm    mmm    m mm  m mm    mmm     #     mmm    mmmm  m   m 
+ "#mmm    #    #" "#  #"  #   #"  " #"  #  #" "#    #    #" "#  #" "#  "m m" 
+     "#   #    #   #  #""""   #     #   #  #   #    #    #   #  #   #   #m#  
+ "mmm#" mm#mm  ##m#"  "#mm"   #     #   #  "#m#"    "mm  "#m#"  "#m"#   "#   
+                                                                 m  #   m"   
+                                                                  ""   ""    
+            </pre>
+        </a>
+        <nav class="site-buttons">
+            <a href="index.html" class="site-button">cd ~/.Home</a>
+            <a href="about.html" class="site-button">ls ~/.About</a>
+            <a href="services.html" class="site-button">ls ~/.Services</a>
+            <a href="contact.html" class="site-button">ls ~/.Contact</a>
+        </nav>
+    </header><br>
+   
+    <!-- CONTACT SAYFASI -->
+    <main class="contact-page">
+
+        <!-- TERMİNAL BAŞLIĞI -->
+        <div class="terminal-header">
+            <h1 class="terminal-title">
+                <i class="fas fa-terminal"></i>
+                sibernology@contact:~$
+                <span class="blink">_</span>
+            </h1>
+
+            <p style="color: #80ff80; font-family: 'Courier New', monospace; margin: 10px 0 0; font-size: 14px;">
+                > Email formu aktif! Mesajlar doğrudan bana ulaşacak. Yanıt süresi 24-48 saat.
+            </p>
+        </div>
+
+        <div class="contact-container">
+            <!-- SOL KOLON - FORM -->
+            <div class="contact-form-section">
+                <h2 class="info-title">>_ Mesaj Gönder</h2>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="isim">Ad Soyad</label>
+                        <input type="text" id="isim" name="isim" class="form-input" placeholder="İsminiz" required>
+                        <!-- DEĞİŞTİ: from_name -> isim -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="E-posta">E-posta</label>
+                        <input type="email" id="E-posta" name="E-posta" class="form-input"
+                            placeholder="cevap_alabileceğiniz_email@domain.com" required>
+                        <!-- DEĞİŞTİ: from_email -> E-posta -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Konu</label>
+                        <input type="text" id="subject" name="subject" class="form-input"
+                            placeholder="Proje teklifi / CTF soru / İşbirliği" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="mesaj">Mesaj</label>
+                        <textarea id="mesaj" name="mesaj" class="form-textarea" rows="6"
+                            placeholder="Mesajınızı buraya yazın..." required></textarea>
+                        <!-- DEĞİŞTİ: message -> mesaj -->
+                    </div>
+
+                    <!-- MESAJ ALANI -->
+                    <div id="messageArea" class="message-area"></div>
+
+                    <button type="submit" class="submit-button" id="submitButton">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="buttonText">MESAJI GÖNDER</span>
+                    </button>
+                </form>
+            </div>
+            <!-- ... diğer kodlar aynı ... -->
+
+            <!-- SAĞ KOLON - İLETİŞİM BİLGİLERİ -->
+            <div class="contact-info-section">
+                <h2 class="info-title">>_ İletişim Bilgileri</h2>
+
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Formu</h4>
+                            <p>Doğrudan ulaşım</p>
+                            <p>Yanıt: 24-48 saat</p>
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/Sibernology" target="_blank" class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p>@Sibernology</p>
+                            <p>Open Source Projeler</p>
+                        </div>
+                    </a>
+
+                    <a href="https://instagram.com/sibernology.xyz" target="_blank" class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <p>@sibernology.xyz</p>
+                            <p>Güncel Paylaşımlar</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank" class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>YouTube</h4>
+                            <p>@sibernolgy.xyz1</p>
+                            <p>CTF & Tutorial</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- SOSYAL MEDYA -->
+                <div class="social-section">
+                    <h3
+                        style="color: #00ff00; font-family: 'Courier New', monospace; margin-bottom: 15px; font-size: 18px;">
+                        >_ Hızlı Erişim
+                    </h3>
+
+                    <div class="social-links">
+                        <a href="https://github.com/Sibernology" target="_blank" class="social-link">
+                            <i class="fab fa-github social-icon"></i>
+                            <span>GitHub</span>
+                        </a>
+
+                        <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank" class="social-link">
+                            <i class="fab fa-youtube social-icon"></i>
+                            <span>YouTube</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/sibernologyxyz/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin social-icon"></i>
+                            <span>LinkedIn</span>
+                        </a>
+
+                        <a href="https://twitter.com" target="_blank" class="social-link">
+                            <i class="fab fa-twitter social-icon"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NOT -->
+                <div
+                    style="margin-top: 30px; padding: 15px; background: rgba(0, 255, 0, 0.05); border: 1px solid rgba(0, 255, 0, 0.3); border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-info-circle" style="color: #00ff00;"></i>
+                        <h4 style="color: #00ff00; margin: 0; font-family: 'Courier New', monospace; font-size: 14px;">
+                            Not
+                        </h4>
+                    </div>
+                    <p style="color: #b0ffb0; margin: 0; font-size: 13px; line-height: 1.4;">
+                        <strong>Önemli:</strong> Form aracılığıyla gönderdiğiniz email adresiniz yalnızca size dönüş
+                        yapmak
+                        için kullanılacaktır. Spam yapmıyorum!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br><br>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>© 2025 - 2026 Telif Hakları <a href="https://instagram.com/sibernology.xyz" target="_blank">Sibernology'e
+                Aittir</a>.</p>
+        <div class="footer-icons">
+            <a href="https://github.com/Sibernology" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/sibernoloy.xyz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sibernologyxyz/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- MATRIX CANVAS -->
+    <canvas id="matrix"></canvas>
+
+    <script>
+        // EmailJS Initialization - SENSİN VERDİĞİN BİLGİLERLE
+        (function () {
+            // PUBLIC KEY: sQVK3W9J-IfjY-dlp
+            emailjs.init("sQVK3W9J-IfjY-dlp");
+            console.log("✅ EmailJS initialized with key: sQVK3W9J-IfjY-dlp");
+        })();
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const submitButton = document.getElementById('submitButton');
+            const buttonText = document.getElementById('buttonText');
+            const messageArea = document.getElementById('messageArea');
+
+            // Butonu devre dışı bırak
+            submitButton.disabled = true;
+            buttonText.textContent = 'GÖNDERİLİYOR...';
+
+            // DEBUG: Form verilerini göster
+            console.log("📝 Form Data:");
+            const formData = new FormData(this);
+            for (let [key, value] of formData.entries()) {
+                console.log(`  ${key}: ${value}`);
+            }
+
+            // Template'deki değişkenler:
+            // 1. {{isim}} - formda name="isim"
+            // 2. {{E-posta}} - formda name="E-posta" (TAM OLARAK BU!)
+            // 3. {{mesaj}} - formda name="mesaj"
+            // 4. {{subject}} - bu template'de yok, eklememiz gerekebilir
+
+            console.log("🚀 Sending to EmailJS...");
+            console.log("   Service: service_6dcj24r");
+            console.log("   Template: template_atccmms");
+
+            // EmailJS gönderimi
+            emailjs.sendForm('service_6dcj24r', 'template_atccmms', this)
+                .then(function (response) {
+                    console.log('✅ SUCCESS!', response);
+                    console.log('Status:', response.status);
+                    console.log('Text:', response.text);
+
+                    // Başarılı mesajı
+                    messageArea.className = 'message-area message-success';
+                    messageArea.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <p>✅ MESAJ BAŞARIYLA GÖNDERİLDİ!</p>
+                <p style="font-size: 12px; margin-top: 5px;">En kısa sürede dönüş yapacağım.</p>
+            `;
+
+                    // Formu temizle
+                    document.getElementById('contactForm').reset();
+
+                    // Butonu yeniden aktif et
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        buttonText.textContent = 'MESAJI GÖNDER';
+                    }, 3000);
+
+                    // Mesajı 5 saniye sonra gizle
+                    setTimeout(() => {
+                        messageArea.style.display = 'none';
+                    }, 5000);
+                }, function (error) {
+                    console.error('❌ FAILED!', error);
+                    console.error('Error status:', error.status);
+                    console.error('Error text:', error.text);
+
+                    // Hata mesajı
+                    messageArea.className = 'message-area message-error';
+                    messageArea.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i>
+                <p>❌ HATA: Mesaj gönderilemedi!</p>
+                <p style="font-size: 12px; margin-top: 5px;">Hata: ${error.text || 'Bilinmeyen hata'}</p>
+                <p style="font-size: 11px; margin-top: 5px;">Konsolda detayları kontrol et (F12)</p>
+            `;
+
+                    // Butonu yeniden aktif et
+                    submitButton.disabled = false;
+                    buttonText.textContent = 'TEKRAR DENE';
+
+                    // Mesajı 5 saniye sonra gizle
+                    setTimeout(() => {
+                        messageArea.style.display = 'none';
+                    }, 5000);
+                });
+        });
+
+        // Matrix efekti ve diğer kodlar aynı kalacak...
+
+        // Matrix efekti
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = 'SIБERNOLOGYEMAILJSCONTACTFORM010101$#%&@';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * canvas.height;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Placeholder düzeltmesi
+        document.addEventListener('DOMContentLoaded', function () {
+            // Input ve textarea renklerini garantiye al
+            const style = document.createElement('style');
+            style.textContent = `
+                .form-input, .form-textarea {
+                    color: #00ff00 !important;
+                    font-family: 'Courier New', monospace !important;
+                }
+                .form-input::placeholder, .form-textarea::placeholder {
+                    color: #00ff88 !important;
+                    opacity: 0.7 !important;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // EmailJS başlatma kontrolü
+            console.log('EmailJS initialized with your keys');
+        });
+    </script>
+</body>
+
+</html>

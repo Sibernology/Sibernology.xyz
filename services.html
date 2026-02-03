@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Sİbernology.png" type="image/x-icon">
+    <title>Sibernology | Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-pMde2rZ9u7+HjKw2H5TtqJc9OaG64K0RmgH/U6sFB1iFbKx9Xo0qOeD6xqV0D0BQFTOFCEhI6hBq8P2FVqv0Dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="site-baslik" style="text-decoration: none; color: #00ff00;" href="index.html">
+            <pre style="font-family: monospace; font-size: 8px; line-height: 1;">
+
+  mmmm    o    #                                  ""#                        
+ #"   " mmm    #mmm    mmm    m mm  m mm    mmm     #     mmm    mmmm  m   m 
+ "#mmm    #    #" "#  #"  #   #"  " #"  #  #" "#    #    #" "#  #" "#  "m m" 
+     "#   #    #   #  #""""   #     #   #  #   #    #    #   #  #   #   #m#  
+ "mmm#" mm#mm  ##m#"  "#mm"   #     #   #  "#m#"    "mm  "#m#"  "#m"#   "#   
+                                                                 m  #   m"   
+                                                                  ""   ""    
+                                                                 
+                      </pre>
+        </a>
+        <nav class="site-buttons">
+            <a href="index.html" class="site-button">cd ~/.Home</a>
+            <a href="about.html" class="site-button">ls ~/.About</a>
+            <a href="services.html" class="site-button">ls ~/.Services</a>
+            <a href="contact.html" class="site-button">ls ~/.Contact</a>
+        </nav>
+    </header>
+    <br><br>
+    <div class="services">
+        <h2>>_ Services</h2>
+        <p>Bu sayfada Projelerimi ve yakında gelecek bandit gibi CTF lerin çözümü gelecek (inşAllah)</p>
+
+        <div class="cards-container">
+
+            <div class="card">
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">Image Processing</span>
+                </div>
+                <h3>Python İle Görüntü İşleme</h3>
+                <p>Bu projeyi öylesine yaptım ve yayınlamak istiyorum içinde el tanıma, yüz bulanıklaştırma, nesne
+                    tespiti gibi görüntü işleme teknikleri bulunuyor.</p>
+                <a href="proje-şablon.html">
+                    <button class="card-button">> İncele</button>
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="tech-tags">
+                    <span class="tech-tag">Projeler</span>
+                    <span class="tech-tag">Güncelleniyor</span>
+                    <span class="tech-tag">Yakında Yayında</span>
+                </div>
+                <h3>Projeler yakında yayında</h3>
+                <p>Eski sitede kalan projeler ve yakında yeni eklenecek projelerle birlikte yakında yayında bazı
+                    toolların kullanımı gelcek ve bazı write-up'lar eklemeyi düşünüyorum</p>
+                <a href="#">
+                    <button class="card-button">> Takipte kal</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+
+
+
+
+    <footer class="site-footer">
+        <p>© 2025 - 2026 Telif Hakları <a href="https://instagram.com/sibernology.xyz" target="_blank">Sibernology'e
+                Aittir</a>.</p>
+        <div class="footer-icons">
+            <a href="https://github.com/Sibernology" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/sibernoloy.xyz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sibernologyxyz/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- MATRIX CANVAS -->
+    <canvas id="matrix"></canvas>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%SİBERNOLOGY';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height;
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>

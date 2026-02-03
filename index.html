@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Sİbernology.png" type="image/x-icon">
+    <title>Sibernology | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-pMde2rZ9u7+HjKw2H5TtqJc9OaG64K0RmgH/U6sFB1iFbKx9Xo0qOeD6xqV0D0BQFTOFCEhI6hBq8P2FVqv0Dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* HOME PAGE SPECIFIC STYLES */
+        .home-page {
+            max-width: 1300px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .terminal-hero {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff00, #00ff88);
+        }
+
+        .welcome-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 42px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .welcome-title::before {
+            content: '$';
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .blinking-cursor {
+            animation: blink 1s infinite;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            color: #80ff80;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* MAIN CARDS SECTION */
+        .main-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .main-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .main-card {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.2);
+            border-color: #00ff88;
+        }
+
+        .card-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 28px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .card-title::before {
+            content: '>>';
+            color: #00ff88;
+        }
+
+        .card-content {
+            color: #b0ffb0;
+            font-size: 17px;
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+
+        .logo-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .logo-card .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .site-logo {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 30px;
+            border: 3px solid #00ff00;
+            border-radius: 50%;
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .site-logo:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+
+        .site-tagline {
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-style: italic;
+            margin-top: 15px;
+            padding: 15px 25px;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 0, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .cta-title {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 32px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .cta-title::before {
+            content: '>>>';
+            color: #00ff88;
+        }
+
+        .cta-description {
+            color: #b0ffb0;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: #000;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4);
+            background: linear-gradient(135deg, #00ff88, #00ff00);
+        }
+
+        /* QUOTE SECTION */
+        .quote-section {
+            background: rgba(15, 20, 25, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00ff00, #00ff88, #00ff00);
+        }
+
+        .terminal-quote {
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 22px;
+            margin: 0;
+            position: relative;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        .quote-prompt {
+            color: #00ff88;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* STATS SECTION */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: rgba(15, 20, 25, 0.95);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            border-color: #00ff00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.15);
+        }
+
+        .stat-number {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 42px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #80ff80;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .home-page {
+                margin: 80px auto 30px;
+                padding: 0 15px;
+            }
+            
+            .welcome-title {
+                font-size: 32px;
+            }
+            
+            .main-cards {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .main-card, .cta-section, .quote-section {
+                padding: 25px;
+            }
+            
+            .card-title, .cta-title {
+                font-size: 24px;
+            }
+            
+            .site-logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-number {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .terminal-hero {
+                padding: 25px;
+            }
+            
+            .welcome-title {
+                font-size: 24px;
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <header class="site-header">
+        <a class="site-baslik" style="text-decoration: none; color: #00ff00;" href="index.html">
+            <pre style="font-family: monospace; font-size: 8px; line-height: 1;">                                                                                        
+  mmmm    o    #                                  ""#                        
+ #"   " mmm    #mmm    mmm    m mm  m mm    mmm     #     mmm    mmmm  m   m 
+ "#mmm    #    #" "#  #"  #   #"  " #"  #  #" "#    #    #" "#  #" "#  "m m" 
+     "#   #    #   #  #""""   #     #   #  #   #    #    #   #  #   #   #m#  
+ "mmm#" mm#mm  ##m#"  "#mm"   #     #   #  "#m#"    "mm  "#m#"  "#m"#   "#   
+                                                                 m  #   m"   
+                                                                  ""   ""    
+            </pre>
+        </a>
+        <nav class="site-buttons">
+            <a href="index.html" class="site-button">cd ~/.Home</a>
+            <a href="about.html" class="site-button">ls ~/.About</a>
+            <a href="services.html" class="site-button">ls ~/.Services</a>
+            <a href="contact.html" class="site-button">ls ~/.Contact</a>
+        </nav>
+    </header><br>
+
+    <main class="home-page">
+        
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="terminal-hero">
+                <h1 class="welcome-title">
+                    sibernology@home:~$ 
+                    <span class="blinking-cursor">_</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Terminal tabanlı siber güvenlik portföyüne hoş geldiniz. 
+                    Projeler, CTF çözümleri ve network security çalışmalarını keşfedin.
+                </p>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Proje/ Ctf / Tools Kullanımı</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Open Source</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Öğrenme</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Geliştirme</span>
+            </div>
+        </div>
+
+        <!-- MAIN CARDS -->
+        <div class="main-cards">
+            <div class="main-card">
+                <h2 class="card-title">
+                    <i class="fas fa-terminal"></i>
+                    Hakkımda
+                </h2>
+                <div class="card-content">
+                    <p>Sibernology; siber güvenlik ve ağ güvenliği odaklı projelerimin, teknik analizlerimin ve uygulamalı çalışmalarımın yer aldığı kişisel bir portföy platformudur.</p>
+                    <p>Bu site, önceki versiyondan bilinçli bir yeniden tasarım süreciyle ayrılmış; içerik ve yapı doğrudan tarafımdan geliştirilmiştir. Yapay zeka yalnızca sınırlı metin düzenlemeleri ve tasarım iyileştirmelerinde kullanılmıştır.</p>
+                    <p>Hedefim, akademik ve teknik olarak kendimi geliştirerek siber güvenlik uzmanlığı alanında uluslararası ölçekte yetkinlik kazanmaktır.</p>
+                </div>
+                <a href="about.html" class="cta-button" style="margin-top: auto; width: fit-content; padding: 12px 25px;">
+                    <i class="fas fa-user"></i>
+                    Detaylı Bilgi
+                </a>
+            </div>
+
+            <div class="main-card logo-card">
+                <div class="card-content">
+                    <img src="Sİbernology.png" alt="Sibernology Logo" class="site-logo">
+                    <p class="site-tagline">
+                        <i class="fas fa-quote-left"></i>
+                        "Siber güvenlik, ağ güvenliği ve Red Team odaklı teknik çalışmalar."
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <a href="https://github.com/Sibernology" target="_blank" class="site-button">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.youtube.com/@sibernolgy.xyz1" target="_blank" class="site-button">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+<br><br>
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <i class="fas fa-code-branch"></i>
+                Projeleri Keşfet
+            </h2>
+            <p class="cta-description">
+                Discord botları, görüntü işleme projeleri, network security araçları ve daha fazlası. 
+                Tüm projelerim open source olarak GitHub'da yayınlanmaktadır.
+            </p>
+            <a href="services.html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Projelere Göz At
+            </a>
+        </section>
+
+        <!-- QUOTE SECTION -->
+        <section class="quote-section">
+            <p class="terminal-quote">
+                <span class="quote-prompt">$</span>
+                echo "Security is built, not assumed."
+            </p>
+        </section>
+
+    </main>
+
+    <br>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p class="footer-text">
+            © 2025 - 2026 Telif Hakları
+            <a class="footer-link" href="https://instagram.com/sibernology.xyz" target="_blank">Sibernology'e Aittir</a>.
+        </p>
+        <div class="footer-icons">
+            <a href="https://github.com/Sibernology" class="icon" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@sibernolgy.xyz1" class="icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/sibernoloy.xyz" class="icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sibernologyxyz/" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- MATRIX CANVAS -->
+    <canvas id="matrix"></canvas>
+
+</body>
+<script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = 'SIБERNOLOGY010101$#%&@CTF{PYTHON}SECURITYHACKER';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) {
+        drops[x] = Math.random() * canvas.height;
+    }
+
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff00';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 50);
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // Smooth scroll animation for buttons
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</html>
